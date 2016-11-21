@@ -71,21 +71,56 @@ void Jogger::tellJoggerNumber() {
 }
 
 void Jogger::getJoggerName() {
+loop:
 	std::cout << "Enter jogger first name " << endl;
-	std::cin >> joggerName;		// this gets a word
+	
+		int i;
+		fgets(joggerName, 69, stdin);
+		if (joggerName[0] == '\n') { goto loop; }	// If user hits enter at the beginning
+	
+		//Place End of array when user hits enter
+		for (i = 0; i < 70; i++) {
+			if (joggerName[i] == '\n') {
+				joggerName[i] = '\0';
+				break;
+			}
+		}
+
+		// Check if numerical/special character entered as name
+		try {
+			char checkNums[] = "0123456789!@#$%^&*/()\"'.?<>~`-+;";
+			if (strpbrk(joggerName, checkNums) != NULL) {
+					throw 99;
+			}
+		}
+		catch (int errorno) {
+			cout << "ERROR:"<<errorno<<" Invalid name! Only alphabets allowed" << endl;
+		}
 }
 
+//void Jogger::checkNameValidity
+
 void Jogger::displayJoggerName() {
+	unsigned int i=0;
 	std::cout << "Jogger name : ";
-	for (unsigned int i = 0; i<joggerName.size(); ++i)
-		std::cout << joggerName[i];
+	while (joggerName){
+		if (joggerName[i] != '\0') {
+			cout << joggerName[i];
+			i++;
+		}
+		else break;
+	}
+	
 	std::cout << endl;
 }
 
 void Jogger::getJoggingDistance() {
 	cout << "Enter jogging distance for this run (in meters):" << endl;
 	cin >> joggingDistance;
-	joggingDistanceList.push_back(joggingDistance);
+	if ((float)joggingDistance == joggingDistance) {
+		joggingDistanceList.push_back(joggingDistance);
+	}
+	else { cout << "Not a valid number!"; }
 }
 
 void Jogger::getJoggingDistance(float jdist) {

@@ -25,13 +25,15 @@ int main()
 	//ia >> jogger2;
 	//jogger2.displayJoggingDist();
 
-
+	/*
 	Jogger jogger1(3500.25, 25.2);
 	Jogger jogger2(2560.25, 11.256);
 	jogger1.getJoggingDistance(2600.5);
 	jogger1.getJoggingDistance(5305.24);
 	jogger1.getJoggingDistance(215.45);
 	jogger1.sortDistances();
+	*/
 
+	Jogger jogger1;
 	return 0;
 }

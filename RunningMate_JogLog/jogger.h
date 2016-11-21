@@ -6,6 +6,7 @@
 #include<string>
 #include <stdlib.h> 
 #include <fstream>
+#include<ctype.h>
 #include<boost\archive\text_oarchive.hpp>
 #include<boost\archive\text_iarchive.hpp>
 
@@ -40,7 +41,7 @@ public:
 	void tellJoggerNumber();	// Not used
 
 private:
-	std::string joggerName;
+	char joggerName[71];
 	static int joggerNumber;
 	float joggingDistance, joggingTime;
 	double joggingSpeed;
